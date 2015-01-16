@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)http://okfnlabs.org/bubbletree/demos/random/#/~/random-names--random-amounts -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>Minimal BubbleTree Demo</title>
+	<script type="text/javascript" src="./Minimal BubbleTree Demo_files/jquery-1.5.2.min.js"></script>
+	<script type="text/javascript" src="./Minimal BubbleTree Demo_files/jquery.history.js"></script>
+	<script type="text/javascript" src="./Minimal BubbleTree Demo_files/raphael.js"></script>
+	<script type="text/javascript" src="./Minimal BubbleTree Demo_files/vis4.js"></script>
+	<script type="text/javascript" src="./Minimal BubbleTree Demo_files/Tween.js"></script>
+	<script type="text/javascript" src="./Minimal BubbleTree Demo_files/bubbletree.js"></script>
+	<link rel="stylesheet" type="text/css" href="./Minimal BubbleTree Demo_files/bubbletree.css">
+	<script type="text/javascript" src="./Minimal BubbleTree Demo_files/cofog.js"></script>
+	
+	
+	<script type="text/javascript">
+       
+		$(function() {
+		
+			var randomNames = ['Burgis', 'Pascal', 'Lysann', 'Theo', 'Julia', 'Barnabas', 'Immanuel', 'Marisa', 'Folker', 'Hadumod', 'Friedegunde', 'Marco', 'Otto', 'Sonnhardt', 'Arntraud', 'Andree', 'Wiltrudis', 'Astrid', 'Kathrein', 'Raoul', 'Vivien', 'Ole', 'Leo', 'Dankward', 'David', 'Ferfried', 'Sonngard', 'Fabio', 'Hansjakob', 'Huberta', 'Doro', 'Gordian', 'Sturmius', 'Sturmhard', 'Reintraud', 'Sabine', 'Georg', 'Sylvia', 'Ann', 'Editha', 'Gunhard', 'Etienne', 'Hildtraud', 'Noah', 'Margarete', 'Stilla', 'Brian', 'Pauline', 'Edgar', 'Kathrin'];
+			var nodeCount = 1;
+			function generateRandomData(node, level) {
+				if (!level) level = 1;
+				var numChildren = 10; //3+Math.round(Math.random()*6);
+				node.children = [];
+				var amount = node.amount;
+				for (var i=0; i<numChildren; i++) {
+					nodeCount ++;
+					var child = { 
+						label: randomNames[Number(String(level-1)+String(i))], 
+						amount: i+1 < numChildren ? amount*Math.random()*.6 : amount
+					};
+					if (level == 1) child.color = vis4color.fromHSL(i/numChildren*360, .7, .5).x;
+					if (level == 2) child.color = vis4color.fromHex(node.color).lightness('*'+(.5+Math.random()*.5)).x;
+					amount -= child.amount;
+					node.children.push(child);
+					if (level < 3) generateRandomData(child, level+1);
+				}
+				return node;
+			}
+			
+			var data = generateRandomData({
+				label: 'Random Names, Random Amounts',
+				amount: 100000000
+			});
+			
+			new BubbleTree({
+				data: data,
+				container: '.bubbletree'
+			});
+		
+			
+		});
+                                        
+	</script>
+</head>
+<body>
+	<div class="bubbletree-wrapper">
+		<div class="bubbletree"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1303" height="651" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><circle cx="651.5" cy="325.5" r="225.65558436834928" fill="none" stroke="#888888" stroke-dasharray="3,1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 1;" stroke-opacity="1"></circle><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><circle cx="651.5" cy="325.5" r="125.81116877220123" fill="#999999" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="651.5" cy="325.5" r="121.81116877220123" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="790.4786871459735" cy="147.72101565201044" r="79.84441559614805" fill="#d89126" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="790.4786871459735" cy="147.72101565201044" r="75.84441559614805" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="571.5882871795452" cy="114.4678675871319" r="10.403403187275265" fill="#b526d8" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="571.5882871795452" cy="114.4678675871319" r="6.403403187275265" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="475.2719100197064" cy="184.5599309688024" r="36.60976522928751" fill="#49d826" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="475.2719100197064" cy="184.5599309688024" r="32.60976522928751" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="427.02629431391557" cy="302.4349135666433" r="13.746197980482988" fill="#4926d8" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="427.02629431391557" cy="302.4349135666433" r="9.746197980482988" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="447.2398903091947" cy="421.40750932915216" r="33.89675541074491" fill="#26d86d" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="447.2398903091947" cy="421.40750932915216" r="29.89675541074491" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="528.7281192988314" cy="514.8343816260511" r="15.080743475325779" fill="#266dd8" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="528.7281192988314" cy="514.8343816260511" r="11.080743475325779" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="637.7752924665958" cy="550.737819115138" r="30.190059586949765" fill="#d82626" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="637.7752924665958" cy="550.737819115138" r="26.190059586949765" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="753.2000729195274" cy="526.9386703807983" r="16.310655481147737" fill="#26d8d8" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="753.2000729195274" cy="526.9386703807983" r="12.310655481147737" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="829.351778261924" cy="464.3855202160849" r="22.434986304143" fill="#b5d826" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="829.351778261924" cy="464.3855202160849" r="18.434986304143" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle><circle cx="872.4750894822512" cy="371.22146744071335" r="17.955319548578682" fill="#d82691" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill-opacity: 1;" fill-opacity="1"></circle><circle cx="872.4750894822512" cy="371.22146744071335" r="13.955319548578682" fill="none" stroke="#ffffff" stroke-dasharray="4,3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0.9;" stroke-opacity="0.9"></circle></svg><div class="label undefined current" style="cursor: pointer; width: 251.622337544402px; opacity: 1; left: 525.688831227799px; top: 308px;"><div class="amount">100m</div><div class="desc">Random Names, Random Amounts</div></div><div class="label2 undefined current" style="display: none; width: 377.433506316604px; opacity: 1; left: 462.783246841698px; top: 451.311168772201px;"><span>Random Names, Random Amounts</span></div><div class="label undefined current" style="cursor: pointer; width: 159.688831192296px; opacity: 1; left: 710.634271549825px; top: 130.22101565201px;"><div class="amount">46.9m</div><div class="desc">Pascal</div></div><div class="label2 undefined current" style="display: none; width: 239.533246788444px; opacity: 1; left: 670.712063751751px; top: 227.565431248159px;"><span>Pascal</span></div><div class="label undefined current" style="cursor: pointer; display: none; width: 20.8068063745505px; opacity: 1; left: 561.18488399227px; top: 96.9678675871319px;"><div class="amount">1.6m</div><div class="desc">Folker</div></div><div class="label2 undefined current" style="width: 70px; opacity: 1; left: 536.588287179545px; top: 124.871270774407px;"><span>Folker</span></div><div class="label undefined current" style="cursor: pointer; width: 73.219530458575px; opacity: 1; left: 438.662144790419px; top: 173.559930968802px;"><div class="amount">12.8m</div><div class="desc" style="display: none;">Theo</div></div><div class="label2 undefined current" style="width: 109.829295687863px; opacity: 1; left: 420.357262175775px; top: 221.16969619809px;"><span>Theo</span></div><div class="label undefined current" style="cursor: pointer; display: none; width: 27.492395960966px; opacity: 1; left: 413.280096333433px; top: 284.934913566643px;"><div class="amount">2.5m</div><div class="desc">Marisa</div></div><div class="label2 undefined current" style="width: 70px; opacity: 1; left: 392.026294313916px; top: 316.181111547126px;"><span>Marisa</span></div><div class="label undefined current" style="cursor: pointer; width: 67.7935108214898px; opacity: 1; left: 413.34313489845px; top: 410.407509329152px;"><div class="amount">11.2m</div><div class="desc" style="display: none;">Julia</div></div><div class="label2 undefined current" style="width: 101.690266232235px; opacity: 1; left: 396.394757193077px; top: 455.304264739897px;"><span>Julia</span></div><div class="label undefined current" style="cursor: pointer; display: none; width: 30.1614869506516px; opacity: 1; left: 513.647375823506px; top: 497.334381626051px;"><div class="amount">2.9m</div><div class="desc">Immanuel</div></div><div class="label2 undefined current" style="width: 70px; opacity: 1; left: 493.728119298831px; top: 529.915125101377px;"><span>Immanuel</span></div><div class="label undefined current" style="cursor: pointer; width: 60.3801191738995px; opacity: 1; left: 607.585232879646px; top: 539.737819115138px;"><div class="amount">9.3m</div><div class="desc" style="display: none;">Burgis</div></div><div class="label2 undefined current" style="width: 90.5701787608493px; opacity: 1; left: 592.490203086171px; top: 580.927878702088px;"><span>Burgis</span></div><div class="label undefined current" style="cursor: pointer; display: none; width: 32.6213109622955px; opacity: 1; left: 736.88941743838px; top: 509.438670380798px;"><div class="amount">3.3m</div><div class="desc">Barnabas</div></div><div class="label2 undefined current" style="width: 70px; opacity: 1; left: 718.200072919527px; top: 543.249325861946px;"><span>Barnabas</span></div><div class="label undefined current" style="cursor: pointer; width: 44.869972608286px; opacity: 1; left: 806.916791957781px; top: 453.385520216085px;"><div class="amount">5.6m</div><div class="desc" style="display: none;">Lysann</div></div><div class="label2 undefined current" style="width: 70px; opacity: 1; left: 794.351778261924px; top: 486.820506520228px;"><span>Lysann</span></div><div class="label undefined current" style="cursor: pointer; display: none; width: 35.9106390971574px; opacity: 1; left: 854.519769933673px; top: 353.721467440713px;"><div class="amount">3.9m</div><div class="desc">Hadumod</div></div><div class="label2 undefined current" style="width: 70px; opacity: 1; left: 837.475089482251px; top: 389.176786989292px;"><span>Hadumod</span></div></div>
+	</div>
+
+
+</body></html>
